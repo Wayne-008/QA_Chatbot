@@ -1,0 +1,18 @@
+langchain
+langchain-huggingface
+langchain-google-genai
+sentence-transformers
+faiss-cpu
+streamlit
+langchain-community
+python-dotenv
+python-docx
+pypdf2
+# unstructed excel loader
+unstructured
+openpyxl
+networkx
+# Doc2text for .docx
+docx2txt
+# PPT
+python-pptx
