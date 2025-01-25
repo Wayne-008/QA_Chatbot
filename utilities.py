@@ -15,8 +15,6 @@ nltk.download('averaged_perceptron_tagger_eng')
 
 load_dotenv("config.env")
 
-faiss_index_name = st.secrets["FAISS_INDEX"]["NAME"]
-print("Googles model",)
 # huggingface_api_key = os.getenv("HUGGINGFACEHUB_API_KEY")
 
 # llm = HuggingFaceHub(
@@ -26,15 +24,19 @@ print("Googles model",)
 #     )
 
 google_api_key = st.secrets["API_KEYS"]["GOOGLE_API_KEY"]
+model_name = st.secrets["MODELS"]["GOOGLE_MODEL"]
+embedding_model_name = st.secrets["MODELS"]["HF_EMBEDDING"]
+faiss_index_name = st.secrets["FAISS_INDEX"]["NAME"]
 
 llm = ChatGoogleGenerativeAI(
-            model=st.secrets["MODELS"]["GOOGLE_MODEL"],
+            model=model_name,
             temperature=0.1,
             max_tokens=512,
+            google_api_key=google_api_key
         )
 
 embeddings = HuggingFaceEmbeddings(
-                model_name = st.secrets["MODELS"]["HF_EMBEDDING"],
+                model_name = embedding_model_name,
                 model_kwargs = {'device': 'cpu'},
                 encode_kwargs = {'normalize_embeddings': False}
             )
