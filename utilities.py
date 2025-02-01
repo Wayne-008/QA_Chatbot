@@ -16,7 +16,10 @@ nltk.download('averaged_perceptron_tagger_eng')
 
 load_dotenv("config.env")
 
-log.basicConfig(level=log.INFO)
+log.basicConfig(
+    level=log.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
 
 # huggingface_api_key = os.getenv("HUGGINGFACEHUB_API_KEY")
 
@@ -152,7 +155,7 @@ def getResponse(query, chat_history):
                     }
                 )
         
-        print("\nModels output - ",result)
+        log.info("\nModels output - %s",result)
         
         # To print the sources
         docs = result["context"]
