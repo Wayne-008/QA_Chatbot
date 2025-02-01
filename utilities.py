@@ -16,7 +16,7 @@ nltk.download('averaged_perceptron_tagger_eng')
 
 load_dotenv("config.env")
 
-log.basicConfig(level=log.info)
+log.basicConfig(level=log.INFO)
 
 # huggingface_api_key = os.getenv("HUGGINGFACEHUB_API_KEY")
 
