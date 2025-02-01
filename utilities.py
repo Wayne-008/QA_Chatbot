@@ -32,8 +32,8 @@ llm = ChatGoogleGenerativeAI(
             model=model_name,
             temperature=0.1,
             max_tokens=512,
-            timeout=30,
-            max_retries=2,
+            timeout=10,
+            max_retries=3,
             google_api_key=google_api_key
         )
 
@@ -61,7 +61,7 @@ def loader(files):
         file_type = file.name.split(".")[-1]
         
         if file_type not in loaders_map:
-            print(f"Unsupported file type: {file_type}")
+            print(f"Unsupported file type : {file_type}, \nPlease upload file type with .pdf, .xlsx, .csv, .txt, .docx, .pptx, .html")
             continue
 
         suffix, loader_class = loaders_map[file_type]
