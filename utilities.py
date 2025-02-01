@@ -1,4 +1,5 @@
 import streamlit as st
+import logging as log
 from langchain_community.document_loaders import PyPDFLoader, UnstructuredCSVLoader, UnstructuredExcelLoader, TextLoader, UnstructuredWordDocumentLoader, UnstructuredHTMLLoader, UnstructuredPowerPointLoader
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
@@ -14,6 +15,8 @@ nltk.download('punkt_tab')
 nltk.download('averaged_perceptron_tagger_eng')
 
 load_dotenv("config.env")
+
+log.basicConfig(level=log.info)
 
 # huggingface_api_key = os.getenv("HUGGINGFACEHUB_API_KEY")
 
@@ -148,11 +151,12 @@ def getResponse(query, chat_history):
                         "chat_history": chat_history,
                     }
                 )
-        print("\nModels output - ",result)
+        
+        log.info("\nModels output - ",result)
         
         # To print the sources
         docs = result["context"]
         for doc in docs:
-            print(doc.metadata["source"])
+            log.info(doc.metadata["source"])
         
         return result['answer']
