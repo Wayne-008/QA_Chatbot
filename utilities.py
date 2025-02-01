@@ -32,6 +32,8 @@ llm = ChatGoogleGenerativeAI(
             model=model_name,
             temperature=0.1,
             max_tokens=512,
+            timeout=30,
+            max_retries=2,
             google_api_key=google_api_key
         )
 
