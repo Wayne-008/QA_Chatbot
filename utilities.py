@@ -152,7 +152,7 @@ def getResponse(query, chat_history):
                     }
                 )
         
-        log.info("\nModels output - ",result)
+        print("\nModels output - ",result)
         
         # To print the sources
         docs = result["context"]
